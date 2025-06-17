@@ -1,7 +1,7 @@
 import itertools
 
 def bruteForceSolver(items:dict, capacity: int) -> tuple[int, list[int]]:
-      """
+    """
     Solves the knapsack problem using brute force method.
 
     Args:
