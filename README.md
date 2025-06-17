@@ -1,6 +1,6 @@
 # Knapsack problem solver
 This is a simple project created in a rush (:P) for my Algorithms and Data Structures class at PUT University solving a knapsack problem using dynamic programming or brute-force method.
-![Baner](https://github.com/suseldev/algorithms-playground-knapsack/blob/master/banner.png?raw=true)
+![Baner](https://github.com/xxSusel/algorithms-playground-knapsack/blob/master/banner.png?raw=true)
 
 ## Usage
 ```bash
