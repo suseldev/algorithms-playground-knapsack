@@ -44,31 +44,31 @@ def dynamicSolver(items:dict, capacity:int) -> tuple[int, list[int]]:
     """
     n = len(items)
     # make the dp array
-    dp = [0] * (capacity + 1)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
 
     itemIds = list(items.keys())
-
-    itemsTaken = [[False]*(capacity+1) for _ in range (n+1)]
 
     # take first n elements
     for i in range(1, n+1):
         itemId = itemIds[i-1]
         value = items[itemId]['value']
         weight = items[itemId]['weight']
-        for w in range(capacity, weight - 1, -1):
-            if w >= weight and dp[w] < dp[w - weight] + value:
-                dp[w] = dp[w - weight] + value
-                itemsTaken[i][w] = True
+        for w in range(capacity + 1):
+            if i == 0 or w == 0:
+                dp[i][w]=0
+
+            elif weight > w:
+                dp[i][w] = dp[i-1][w]
             else:
-                itemsTaken[i][w] = itemsTaken[i-1][w]
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weight] + value)
 
     # check which items were used
-    restoredItems = []
+    selectedItems = []
     w = capacity
     for i in range(n, 0, -1):
-        if itemsTaken[i][w]:
+        if dp[i][w] != dp[i-1][w]:
             itemId = itemIds[i-1]
-            restoredItems.append(itemId)
+            selectedItems.append(itemId)
             w -= items[itemId]['weight']
 
-    return dp[capacity], restoredItems[::-1]
+    return dp[n][capacity], selectedItems[::-1]

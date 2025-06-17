@@ -1,11 +1,13 @@
 import pytest
+import random
+
 from algorithms import dynamicSolver, bruteForceSolver
 
 @pytest.fixture
 def sample_items():
     return {
         0: {'value': 60, 'weight': 10},
-        1: {'value': 80, 'weight': 20},
+        1: {'value': 100, 'weight': 20},
         2: {'value': 120, 'weight': 30}
     }
 
