@@ -21,7 +21,7 @@ def bruteForceSolver(items:dict, capacity: int) -> tuple[int, list[int]]:
     for size in range(1, n+1):
         for subset in itertools.combinations(itemIds, size):
             totalWeight = sum(items[i]['weight'] for i in subset)
-            totalValue = sum(items[i]['weight'] for i in subset)
+            totalValue = sum(items[i]['value'] for i in subset)
 
             if totalWeight <= capacity and totalValue > bestValue:
                 bestValue = totalValue
